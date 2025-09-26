@@ -60,6 +60,7 @@ struct EventWithId {
 class Probe {
  public:
   // Default constructor
+  // Default constructor
   Probe() {}
   // Copy constructor
   Probe(const Probe& other) : type(other.type), name(other.name), functions(other.functions) {
@@ -150,6 +151,7 @@ struct SysCallProbe : public Probe {
     DC_LOG_TRACE("SysCallProbe::toJson called");
     // No extra fields, just use base
     return Probe::toJson(include_functions);
+    return Probe::toJson(include_functions);
   }
 
   // Deserializes a syscall probe from a JSON object
@@ -181,6 +183,7 @@ struct KProbe : public Probe {
   json_object* toJson(bool include_functions=true) const override {
     DC_LOG_TRACE("KProbe::toJson called");
     // No extra fields, just use base
+    return Probe::toJson(include_functions);
     return Probe::toJson(include_functions);
   }
 
@@ -222,6 +225,7 @@ struct UProbe : public Probe {
   // Serializes the uprobe to a JSON object
   json_object* toJson(bool include_functions=true) const override {
     DC_LOG_TRACE("UProbe::toJson called");
+    json_object* j = Probe::toJson(include_functions);
     json_object* j = Probe::toJson(include_functions);
     json_object_object_add(j, "binary_path", json_object_new_string(binary_path.c_str()));
     json_object_object_add(j, "include_offsets", json_object_new_boolean(include_offsets));
@@ -277,6 +281,7 @@ struct USDTProbe : public Probe {
   // Serializes the USDT probe to a JSON object
   json_object* toJson(bool include_functions=true) const override {
     DC_LOG_TRACE("USDTProbe::toJson called");
+    json_object* j = Probe::toJson(include_functions);
     json_object* j = Probe::toJson(include_functions);
     json_object_object_add(j, "binary_path", json_object_new_string(binary_path.c_str()));
     json_object_object_add(j, "provider", json_object_new_string(provider.c_str()));
@@ -349,6 +354,7 @@ struct CustomProbe : public Probe {
   // Serializes the USDT probe to a JSON object
   json_object* toJson(bool include_functions=true) const override {
     DC_LOG_TRACE("CustomProbe::toJson called");
+    json_object* j = Probe::toJson(include_functions);
     json_object* j = Probe::toJson(include_functions);
     json_object_object_add(j, "bpf_path", json_object_new_string(bpf_path.c_str()));
     json_object_object_add(j, "start_event_id", json_object_new_int64(start_event_id));
