@@ -137,6 +137,7 @@ std::unordered_map<std::string, std::string> SystemConfigurator::system_configur
       {"DATACRUMBS_KERNEL_HEADERS_PATH", DATACRUMBS_KERNEL_HEADERS_PATH},
       {"DATACRUMBS_LIBC_SO", DATACRUMBS_LIBC_SO},
       {"DATACRUMBS_DISABLE_PROBE_SIGNING", probe_signing_disabled},
+      {"BPFTOOL_EXECUTABLE", BPFTOOL_EXECUTABLE},
   };
 }
 
